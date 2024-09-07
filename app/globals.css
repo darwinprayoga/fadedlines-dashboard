@@ -2,26 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer components {
+  .pointer {
+    @apply cursor-auto md:cursor-pointer transition duration-300 hover:scale-[1.03] active:translate-y-[1px] active:scale-[0.99];
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  .border-fade {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    border: 3px solid transparent;
+    background: linear-gradient(
+        145deg,
+        rgba(5, 250, 1, 1) 0%,
+        rgba(0, 0, 0, 0) 27%,
+        rgba(0, 0, 0, 0) 70%,
+        rgba(5, 250, 1, 1) 100%
+      )
+      border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    @apply bg-black text-white scroll-smooth;
+  }
+
+  h1 {
+    @apply text-3xl md:text-5xl text-main leading-7;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl text-main;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl text-main;
+  }
+
+  h4 {
+    @apply text-lg md:text-xl text-main;
+  }
+
+  sub {
+    @apply text-[10px] md:text-xs flex font-extralight leading-normal;
+  }
+
+  li {
+    @apply list-inside text-xs md:text-sm;
+  }
+
+  a {
+    @apply pointer text-xs md:text-sm text-[#90D5FF];
+  }
+
+  p {
+    @apply text-xs md:text-sm;
+  }
+
+  i {
+    @apply text-xs md:text-sm;
+  }
+
+  b {
+    @apply font-normal md:font-bold text-xs md:text-sm tracking-wider;
+  }
+
+  button {
+    @apply pointer tracking-wider hover:shadow-custom-center hover:shadow-main/50 flex justify-center items-center gap-1 md:gap-3 font-medium text-xs px-[36px] py-[12px] md:px-[25px] md:py-[13px] rounded-xl md:rounded-md;
+  }
+
+  input {
+    @apply focus:outline-0;
+  }
+
+  ::-webkit-scrollbar {
+    @apply hidden;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

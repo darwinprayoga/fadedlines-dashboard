@@ -8,9 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        "3xl": "1952px",
+      },
+      boxShadow: {
+        "custom-center": "0 0 10px 5px rgba(0, 0, 0, 0.5)",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        main: "#42FF00",
+        secondary: "#155600",
       },
     },
   },
