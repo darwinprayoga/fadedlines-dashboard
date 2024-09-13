@@ -40,7 +40,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-col gap-4 items-center">
+          <div className="flex flex-col gap-4 items-center mt-4">
             <button className="w-full bg-main text-black">
               Login With Google
             </button>

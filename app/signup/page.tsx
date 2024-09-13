@@ -86,7 +86,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4 items-center w-72">
+          <div className="flex flex-col gap-4 items-center w-72 mt-4">
             <p className="text-main flex justify-center gap-2">
               <input type="checkbox" /> Agree with terms and conditions.
             </p>
