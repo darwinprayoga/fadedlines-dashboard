@@ -15,6 +15,7 @@ const config: Config = {
         "custom-center": "0 0 10px 5px rgba(0, 0, 0, 0.5)",
       },
       colors: {
+        black: "#121212",
         main: "#42FF00",
         secondary: "#155600",
       },

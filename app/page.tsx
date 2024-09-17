@@ -35,13 +35,7 @@ export default function Home() {
   const [booking, setBooking] = useState(false);
 
   return (
-    <div
-      style={{
-        background:
-          "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
-      }}
-      className="grid grid-cols-1 md:grid-cols-10"
-    >
+    <div className="grid grid-cols-1 md:grid-cols-10">
       <div className="flex justify-between items-center p-6 md:hidden">
         <Strips onClick={() => setStrip(true)} className="h-5 pointer" />
         <h3 className="text-white">Overview</h3>
@@ -60,7 +54,7 @@ export default function Home() {
       >
         <div className="flex flex-col gap-8 py-14 px-10 items-center">
           <div className="flex flex-col gap-2 items-center">
-            <User className="w-14 mb-4" />
+            <Nav2 className="w-14 mb-4" />
             <p>Active</p>
             <div className="flex flex-col items-center">
               <h3 className="text-white">Administrator</h3>
@@ -85,14 +79,14 @@ export default function Home() {
             <ArrowDown className="w-5" />
           </div>
 
-          <div className="py-1 px-2 rounded-md flex items-center gap-2 w-40">
+          <div className="py-2 px-3 rounded-md flex items-center gap-2 w-40">
             <Settings className="w-7" /> <p className="w-full">Settings</p>
-            <ArrowDown className="w-6" />
+            <ArrowDown className="w-5" />
           </div>
 
-          <div className="py-1 px-2 rounded-md flex items-center gap-2 w-40">
-            <Logout className="w-6" /> <p className="w-full">Sign Out</p>
-            <ArrowDown className="w-6" />
+          <div className="py-2 px-3 rounded-md flex items-center gap-2 w-40">
+            <Logout className="w-5" /> <p className="w-full">Sign Out</p>
+            <ArrowDown className="w-5" />
           </div>
         </div>
       </div>
@@ -112,16 +106,19 @@ export default function Home() {
           <h2>Dashboard</h2>
         </div>
 
-        <div className="flex flex-col gap-2 p-[38px]">
-          <div className="py-1 px-2 rounded-md bg-main text-black mb-4 flex items-center gap-2">
-            <Nav1 className="w-6" /> Overview
+        <div className="flex flex-col gap-2 p-[38px] text-[#A4A4A4]">
+          <div className="py-2 px-3 rounded-md bg-[#212121] mb-4 flex items-center gap-2">
+            <Search className="w-5" /> Search
+          </div>
+          <div className="py-2 px-3 rounded-md bg-main text-black mb-4 flex items-center gap-2">
+            <Nav1 className="w-5" /> Overview
           </div>
           <div className="flex flex-col">
             <div
               onClick={() => setUsers(!users)}
-              className="py-1 px-2 rounded-md flex items-center gap-2 pointer"
+              className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]"
             >
-              <Nav2 className="w-6" /> <p className="w-full">User</p>
+              <Nav2 className="w-5" /> <p className="w-full">User</p>
               <ArrowDown className={`w-6 ${users && "rotate-180"}`} />
             </div>
             {users && (
@@ -131,15 +128,15 @@ export default function Home() {
               </div>
             )}
           </div>
-          <div className="py-1 px-2 rounded-md flex items-center gap-2 pointer">
-            <Nav3 className="w-6" /> <p className="w-full">Business</p>
+          <div className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
+            <Nav3 className="w-5" /> <p className="w-full">Business</p>
           </div>
           <div className="flex flex-col">
             <div
               onClick={() => setTeams(!teams)}
-              className="py-1 px-2 rounded-md flex items-center gap-2 pointer"
+              className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]"
             >
-              <Nav4 className="w-6" /> <p className="w-full">Teams</p>
+              <Nav4 className="w-5" /> <p className="w-full">Teams</p>
               <ArrowDown className={`w-6 ${teams && "rotate-180"}`} />
             </div>
             {teams && (
@@ -149,15 +146,15 @@ export default function Home() {
               </div>
             )}
           </div>
-          <div className="py-1 px-2 rounded-md flex items-center gap-2 pointer">
-            <Nav5 className="w-6" /> <p className="w-full">Services</p>
+          <div className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
+            <Nav5 className="w-5" /> <p className="w-full">Services</p>
           </div>
           <div className="flex flex-col">
             <div
               onClick={() => setBooking(!booking)}
-              className="py-1 px-2 rounded-md flex items-center gap-2 pointer"
+              className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]"
             >
-              <Nav6 className="w-6" /> <p className="w-full">Booking</p>
+              <Nav6 className="w-5" /> <p className="w-full">Booking</p>
               <ArrowDown className={`w-6 ${booking && "rotate-180"}`} />
             </div>
             {booking && (
@@ -167,57 +164,63 @@ export default function Home() {
               </div>
             )}
           </div>
-          <div className="py-1 px-2 rounded-md flex items-center gap-2 pointer">
-            <Nav7 className="w-6" /> <p className="w-full">Customer</p>
+          <div className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
+            <Nav7 className="w-5" /> <p className="w-full">Customer</p>
           </div>
-          <div className="py-1 px-2 rounded-md flex items-center gap-2 pointer">
-            <Nav8 className="w-6" /> <p className="w-full">Marketing</p>
+          <div className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
+            <Nav8 className="w-5" /> <p className="w-full">Marketing</p>
           </div>
         </div>
       </div>
 
       <div className="col-span-8 h-full flex flex-col p-6 md:p-8">
         <div className="hidden md:flex p-6 md:p-8 items-center justify-between">
-          <h2 className="text-white">Overview</h2>
+          <h2>Overview</h2>
 
           <div className="flex gap-8">
             <div className="flex items-center gap-4">
-              <h3 className="text-white">Mode</h3>
-              <div className="bg-white p-[2px] flex rounded-md">
-                <div className="bg-black px-6 rounded-md">Dark</div>
-                <div className="w-14"></div>
+              <h3 className="text-white">Dark Mode</h3>
+              <div className="bg-[#212121] flex rounded-full">
+                <div className="w-8"></div>
+                <div className="bg-main w-4 h-4 rounded-full"></div>
               </div>
             </div>
 
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-4 items-center bg-[#212121] text-[#3E3E3E] p-2 rounded-md">
               <Search className="w-5" />
               <input
-                className="rounded-md px-1 text-black h-min"
+                className="rounded-md px-1 bg-[#212121] placeholder-[#3E3E3E] h-min"
                 type="search"
+                placeholder="Search"
                 name="search"
                 id="search"
               />
             </div>
 
             <div className="flex gap-8 items-center relative">
-              <Bell onClick={() => setNotif(!notif)} className="w-7 pointer" />
-              <User className="w-8" />
+              <div
+                onClick={() => setNotif(!notif)}
+                className="pointer bg-[#212121] p-3 rounded-md"
+              >
+                <Bell className="w-6" />
+              </div>
+              <div className="pointer bg-[#212121] p-3 rounded-md">
+                <Nav2 className="w-6" />
+              </div>
               <div className="flex flex-col items-center">
                 <p>Administrator</p>
-                <sub>Dejan Tomic</sub>
               </div>
-              <Dots onClick={() => setDot(!dot)} className="h-5 pointer" />
+              <Dots onClick={() => setDot(!dot)} className="h-6 pointer" />
               {notif && (
                 <div
                   style={{
-                    background:
-                      "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
+                    background: "rgba(54, 54, 54, 0.8)",
                   }}
                   className="absolute -left-96 top-14 rounded-md p-6 gap-4 flex flex-col items-center 
                opacity-0 translate-y-[-20px] transition-all duration-300 ease-in-out
-               animate-[fadeInDrop_0.3s_ease-in-out_forwards]"
+               animate-[fadeInDrop_0.3s_ease-in-out_forwards] backdrop-blur-md"
                 >
-                  <div className="py-1 px-2 rounded-md flex items-center gap-2">
+                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
                     <User className="w-7" />
                     <p className="w-72">
                       New Incoming Booking From AldovaGuswantri / Booking Number
@@ -225,7 +228,7 @@ export default function Home() {
                     </p>
                     <Trash className="w-7" />
                   </div>
-                  <div className="py-1 px-2 rounded-md flex items-center gap-2">
+                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
                     <User className="w-7" />
                     <p className="w-72">
                       New Incoming Booking From AldovaGuswantri / Booking Number
@@ -233,7 +236,7 @@ export default function Home() {
                     </p>
                     <Trash className="w-7" />
                   </div>
-                  <div className="py-1 px-2 rounded-md flex items-center gap-2">
+                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
                     <User className="w-7" />
                     <p className="w-72">
                       New Incoming Booking From AldovaGuswantri / Booking Number
@@ -251,23 +254,22 @@ export default function Home() {
               {dot && (
                 <div
                   style={{
-                    background:
-                      "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
+                    background: "rgba(54, 54, 54, 0.8)",
                   }}
                   className="absolute right-0 top-14 rounded-md p-6 gap-4 flex flex-col
                opacity-0 translate-y-[-20px] transition-all duration-300 ease-in-out
-               animate-[fadeInDrop_0.3s_ease-in-out_forwards]"
+               animate-[fadeInDrop_0.3s_ease-in-out_forwards] backdrop-blur-md"
                 >
-                  <div className="py-1 px-2 rounded-md flex items-center gap-2">
-                    <Settings className="w-7" />
+                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
+                    <Settings className="w-5" />
                     <p>Settings</p>
                   </div>
-                  <div className="py-1 px-2 rounded-md flex items-center gap-2">
-                    <Nav2 className="w-7" />
+                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
+                    <Nav2 className="w-5" />
                     <p>Profile</p>
                   </div>
-                  <div className="py-1 px-2 rounded-md flex items-center gap-2">
-                    <Logout className="w-6" />
+                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
+                    <Logout className="w-5" />
                     <p>Sign Out</p>
                   </div>
                 </div>
@@ -280,52 +282,49 @@ export default function Home() {
           <div
             style={{
               background:
-                "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
+                "radial-gradient(83.11% 289.3% at 89.4% -6.2%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
             }}
-            className="px-5 py-3 gap-4 rounded-md flex flex-col h-min"
+            className="px-10 py-8 gap-4 rounded-md flex flex-col h-min"
           >
-            <div className="flex justify-between gap-52">
-              <div className="flex flex-col gap-2">
-                <h4 className="text-white font-medium w-max">
-                  Hi, Dejan Tomic
-                </h4>
-
-                <button className="bg-main text-black w-max py-1 px-2">
-                  Verified
-                </button>
-              </div>
-              <div className="w-28 h-28 bg-[#2F2F2F] rounded-md"></div>
-            </div>
-
-            <div className="w-full bg-main h-[1px]"></div>
-
-            <div className="flex justify-between">
-              <div className="relative group w-32 md:w-56">
-                <div className="bg-white p-1 text-black rounded-md h-min flex justify-between relative z-10">
-                  <p>Fadedlines Oakleigh</p>
-                  <ArrowDown className="w-5" />
-                </div>
-
-                {/* Dropdown content */}
-                <div className="flex flex-col absolute top-4 pt-2 bg-[#343434] text-white w-full left-0 rounded-b-md divide-y divide-[#424242] opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transform transition-all duration-300 ease-in-out z-0">
-                  <div className="p-1 pointer">
-                    <p>Fadedlines London</p>
-                  </div>
-                  <div className="p-1 pointer">
-                    <p>Fadedlines Jakarta</p>
-                  </div>
-                  <div className="p-1 pointer">
-                    <p>Fadedlines New Zealand</p>
+            <div className="flex justify-between gap-4">
+              <div className="w-20 h-20 bg-[#2F2F2F] rounded-md hidden md:block"></div>
+              <div className="flex flex-col gap-4 w-full md:w-max">
+                <div className="flex justify-between gap-4">
+                  <h4 className="text-white font-medium w-max">
+                    Hi, Dejan Tomic
+                  </h4>
+                  <div className="flex flex-col gap-2">
+                    <button className="bg-main text-black w-max py-1 px-2">
+                      Verified
+                    </button>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex gap-4 items-center">
-                <p>Active</p>
-                <div className="bg-main w-3 h-3 rounded-full"></div>
+                <div className="flex justify-between">
+                  <div className="relative group w-full">
+                    <div className="bg-[#3E3E3E] px-2 py-1 text-white rounded-md h-min flex justify-between relative z-10">
+                      <p>Fadedlines Oakleigh</p>
+                      <ArrowDown className="w-5" />
+                    </div>
+
+                    {/* Dropdown content */}
+                    <div className="flex flex-col absolute top-4 pt-2 bg-[#343434] text-white w-full left-0 rounded-b-md divide-y divide-[#424242] opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transform transition-all duration-300 ease-in-out z-0">
+                      <div className="px-2 py-1 pointer">
+                        <p>Fadedlines London</p>
+                      </div>
+                      <div className="px-2 py-1 pointer">
+                        <p>Fadedlines Jakarta</p>
+                      </div>
+                      <div className="px-2 py-1 pointer">
+                        <p>Fadedlines New Zealand</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
           <Dummy2 className="md:w-1/2" />
         </div>
 
@@ -333,7 +332,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-14 px-6 py-10">
             <h3 className="text-white w-72">Channel Performance</h3>
 
-            <div className="bg-white p-1 text-black rounded-md h-min flex justify-between w-32 md:w-56">
+            <div className="bg-[#3E3E3E] px-2 py-1 text-white rounded-md h-min flex justify-between w-32 md:w-56">
               <p>Monthly</p>
               <ArrowDown className="w-5" />
             </div>
@@ -356,7 +355,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-14 px-6 py-10">
             <h3 className="text-white w-72">Overall Performance</h3>
 
-            <div className="bg-white p-1 text-black rounded-md h-min flex justify-between w-32 md:w-56">
+            <div className="bg-[#3E3E3E] px-2 py-1 text-white rounded-md h-min flex justify-between w-32 md:w-56">
               <p>Monthly</p>
               <ArrowDown className="w-5" />
             </div>
