@@ -1,4 +1,4 @@
-export function User(props: React.SVGProps<SVGSVGElement>) {
+export function Person(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

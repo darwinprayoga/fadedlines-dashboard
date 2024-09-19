@@ -1,12 +1,9 @@
 "use client";
 
+import Overview from "@/components/routes/overview";
 import { ArrowDown } from "@/components/svg/arrow-down";
 import { Bell } from "@/components/svg/bell";
 import { Dots } from "@/components/svg/dots";
-import { Dummy2 } from "@/components/svg/dummy-2";
-import { Dummy3 } from "@/components/svg/dummy-3";
-import { Dummy4 } from "@/components/svg/dummy-4";
-import { Dummy5 } from "@/components/svg/dummy-5";
 import { Logo } from "@/components/svg/logo";
 import { Logout } from "@/components/svg/logout";
 import { Nav1 } from "@/components/svg/nav-1";
@@ -19,10 +16,12 @@ import { Nav7 } from "@/components/svg/nav-7";
 import { Nav8 } from "@/components/svg/nav-8";
 import { Search } from "@/components/svg/search";
 import { Settings } from "@/components/svg/settings";
+import { Shortcut } from "@/components/svg/shortcut";
 import { Strips } from "@/components/svg/strips";
 import { Trash } from "@/components/svg/trash";
-import { User } from "@/components/svg/user";
+import { Person } from "@/components/svg/person";
 import { useState } from "react";
+import User from "@/components/routes/user";
 
 export default function Home() {
   const [strip, setStrip] = useState(false);
@@ -33,6 +32,14 @@ export default function Home() {
   const [users, setUsers] = useState(false);
   const [teams, setTeams] = useState(false);
   const [booking, setBooking] = useState(false);
+
+  //pages
+  const [route, setRoute] = useState(0);
+
+  const routes = [{ dom: <Overview /> }, { dom: <User /> }];
+
+  const on = "bg-main text-black";
+  const off = "bg-[#212121]";
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-10">
@@ -48,7 +55,7 @@ export default function Home() {
           background:
             "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
         }}
-        className={`col-span-2 h-full flex-col gap-14 fixed w-full md:static backdrop-blur-md ${
+        className={`col-span-2 h-full flex-col gap-14 fixed w-full md:static backdrop-blur-md z-20 ${
           dot ? "flex md:hidden" : "hidden"
         }`}
       >
@@ -97,7 +104,7 @@ export default function Home() {
           background:
             "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
         }}
-        className={`col-span-2 h-full md:flex flex-col gap-14 fixed w-full md:static backdrop-blur-md ${
+        className={`col-span-2 h-full md:flex flex-col gap-14 fixed w-full md:static backdrop-blur-md z-20 ${
           strip ? "md:flex" : "hidden"
         }`}
       >
@@ -106,25 +113,37 @@ export default function Home() {
           <h2>Dashboard</h2>
         </div>
 
-        <div className="flex flex-col gap-2 p-[38px] text-[#A4A4A4]">
-          <div className="py-2 px-3 rounded-md bg-[#212121] mb-4 flex items-center gap-2">
-            <Search className="w-5" /> Search
+        <div className="flex flex-col gap-2 p-[60px] text-[#A4A4A4]">
+          <div className="py-2 px-3 rounded-md bg-[#212121] mb-4 flex justify-between items-center gap-2">
+            <div className="flex gap-2">
+              <Search className="w-5" /> Search
+            </div>
+            <Shortcut className="w-5" />
           </div>
-          <div className="py-2 px-3 rounded-md bg-main text-black mb-4 flex items-center gap-2">
+          <div
+            onClick={() => setRoute(0)}
+            className={`py-2 px-3 rounded-md mb-4 flex items-center gap-2 pointer ${
+              route == 0 ? on : off
+            }`}
+          >
             <Nav1 className="w-5" /> Overview
           </div>
           <div className="flex flex-col">
             <div
               onClick={() => setUsers(!users)}
-              className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]"
+              className={`py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121] ${
+                route == 1 ? on : off
+              }`}
             >
-              <Nav2 className="w-5" /> <p className="w-full">User</p>
+              <Nav2 className="w-5" /> <p className="w-full">Users</p>
               <ArrowDown className={`w-6 ${users && "rotate-180"}`} />
             </div>
             {users && (
               <div className="flex flex-col gap-2 pt-2 px-10">
-                <p>User</p>
-                <p>Role</p>
+                <p onClick={() => setRoute(1)} className="pointer">
+                  User
+                </p>
+                <p className="pointer">Role</p>
               </div>
             )}
           </div>
@@ -141,8 +160,8 @@ export default function Home() {
             </div>
             {teams && (
               <div className="flex flex-col gap-2 pt-2 px-10">
-                <p>Owner</p>
-                <p>Barber</p>
+                <p className="pointer">Owner</p>
+                <p className="pointer">Barber</p>
               </div>
             )}
           </div>
@@ -159,8 +178,8 @@ export default function Home() {
             </div>
             {booking && (
               <div className="flex flex-col gap-2 pt-2 px-10">
-                <p>List</p>
-                <p>Calendar</p>
+                <p className="pointer">List</p>
+                <p className="pointer">Calendar</p>
               </div>
             )}
           </div>
@@ -174,7 +193,7 @@ export default function Home() {
       </div>
 
       <div className="col-span-8 h-full flex flex-col p-6 md:p-8">
-        <div className="hidden md:flex p-6 md:p-8 items-center justify-between">
+        <div className="hidden md:flex py-6 md:py-8 items-center justify-between">
           <h2>Overview</h2>
 
           <div className="flex gap-8">
@@ -184,17 +203,6 @@ export default function Home() {
                 <div className="w-8"></div>
                 <div className="bg-main w-4 h-4 rounded-full"></div>
               </div>
-            </div>
-
-            <div className="flex gap-4 items-center bg-[#212121] text-[#3E3E3E] p-2 rounded-md">
-              <Search className="w-5" />
-              <input
-                className="rounded-md px-1 bg-[#212121] placeholder-[#3E3E3E] h-min"
-                type="search"
-                placeholder="Search"
-                name="search"
-                id="search"
-              />
             </div>
 
             <div className="flex gap-8 items-center relative">
@@ -210,7 +218,9 @@ export default function Home() {
               <div className="flex flex-col items-center">
                 <p>Administrator</p>
               </div>
-              <Dots onClick={() => setDot(!dot)} className="h-6 pointer" />
+              <div onClick={() => setDot(!dot)} className="p-2 pointer">
+                <Dots className="h-6" />
+              </div>
               {notif && (
                 <div
                   style={{
@@ -221,7 +231,7 @@ export default function Home() {
                animate-[fadeInDrop_0.3s_ease-in-out_forwards] backdrop-blur-md"
                 >
                   <div className="py-2 px-3 rounded-md flex items-center gap-2">
-                    <User className="w-7" />
+                    <Person className="w-7" />
                     <p className="w-72">
                       New Incoming Booking From AldovaGuswantri / Booking Number
                       43823d3
@@ -229,7 +239,7 @@ export default function Home() {
                     <Trash className="w-7" />
                   </div>
                   <div className="py-2 px-3 rounded-md flex items-center gap-2">
-                    <User className="w-7" />
+                    <Person className="w-7" />
                     <p className="w-72">
                       New Incoming Booking From AldovaGuswantri / Booking Number
                       43823d3
@@ -237,7 +247,7 @@ export default function Home() {
                     <Trash className="w-7" />
                   </div>
                   <div className="py-2 px-3 rounded-md flex items-center gap-2">
-                    <User className="w-7" />
+                    <Person className="w-7" />
                     <p className="w-72">
                       New Incoming Booking From AldovaGuswantri / Booking Number
                       43823d3
@@ -278,92 +288,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-10">
-          <div
-            style={{
-              background:
-                "radial-gradient(83.11% 289.3% at 89.4% -6.2%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
-            }}
-            className="px-10 py-8 gap-4 rounded-md flex flex-col h-min"
-          >
-            <div className="flex justify-between gap-4">
-              <div className="w-20 h-20 bg-[#2F2F2F] rounded-md hidden md:block"></div>
-              <div className="flex flex-col gap-4 w-full md:w-max">
-                <div className="flex justify-between gap-4">
-                  <h4 className="text-white font-medium w-max">
-                    Hi, Dejan Tomic
-                  </h4>
-                  <div className="flex flex-col gap-2">
-                    <button className="bg-main text-black w-max py-1 px-2">
-                      Verified
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex justify-between">
-                  <div className="relative group w-full">
-                    <div className="bg-[#3E3E3E] px-2 py-1 text-white rounded-md h-min flex justify-between relative z-10">
-                      <p>Fadedlines Oakleigh</p>
-                      <ArrowDown className="w-5" />
-                    </div>
-
-                    {/* Dropdown content */}
-                    <div className="flex flex-col absolute top-4 pt-2 bg-[#343434] text-white w-full left-0 rounded-b-md divide-y divide-[#424242] opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transform transition-all duration-300 ease-in-out z-0">
-                      <div className="px-2 py-1 pointer">
-                        <p>Fadedlines London</p>
-                      </div>
-                      <div className="px-2 py-1 pointer">
-                        <p>Fadedlines Jakarta</p>
-                      </div>
-                      <div className="px-2 py-1 pointer">
-                        <p>Fadedlines New Zealand</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <Dummy2 className="md:w-1/2" />
-        </div>
-
-        <div className="flex flex-col">
-          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-14 px-6 py-10">
-            <h3 className="text-white w-72">Channel Performance</h3>
-
-            <div className="bg-[#3E3E3E] px-2 py-1 text-white rounded-md h-min flex justify-between w-32 md:w-56">
-              <p>Monthly</p>
-              <ArrowDown className="w-5" />
-            </div>
-          </div>
-
-          <div className="flex overflow-x-scroll md:-mx-8 md:pl-8">
-            <div className="flex flex-col md:flex-row gap-4 w-full md:w-max">
-              <Dummy3 className="md:w-[350px]" />
-              <Dummy3 className="md:w-[350px]" />
-              <Dummy3 className="md:w-[350px]" />
-              <Dummy3 className="md:w-[350px]" />
-              <Dummy3 className="md:w-[350px]" />
-              <Dummy3 className="md:w-[350px]" />
-              <Dummy3 className="md:w-[350px]" />
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col">
-          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-14 px-6 py-10">
-            <h3 className="text-white w-72">Overall Performance</h3>
-
-            <div className="bg-[#3E3E3E] px-2 py-1 text-white rounded-md h-min flex justify-between w-32 md:w-56">
-              <p>Monthly</p>
-              <ArrowDown className="w-5" />
-            </div>
-          </div>
-
-          <Dummy4 className="hidden md:block" />
-          <Dummy5 className="md:hidden" />
-        </div>
+        {routes[route].dom}
       </div>
     </div>
   );
