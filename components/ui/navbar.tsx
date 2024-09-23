@@ -20,10 +20,18 @@ import { Shortcut } from "@/components/svg/shortcut";
 import { Strips } from "@/components/svg/strips";
 import { Trash } from "@/components/svg/trash";
 import { Person } from "@/components/svg/person";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import User from "@/components/routes/user";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Nav1on } from "../svg/nav-1-on";
+import { Nav2on } from "../svg/nav-2-on";
 
-export default function Home() {
+export default function Navbar({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   const [strip, setStrip] = useState(false);
   const [dot, setDot] = useState(false);
   const [notif, setNotif] = useState(false);
@@ -33,16 +41,31 @@ export default function Home() {
   const [teams, setTeams] = useState(false);
   const [booking, setBooking] = useState(false);
 
-  //pages
+  function eventDefault() {
+    setUsers(false);
+    setTeams(false);
+    setBooking(false);
+  }
+
+  //detect route
+  const slug = usePathname();
   const [route, setRoute] = useState(0);
 
-  const routes = [{ dom: <Overview /> }, { dom: <User /> }];
+  const setActiveState = (currentSlug: string): number => {
+    if (currentSlug.includes("user")) return 1;
+    // else if (currentSlug.includes("showcase")) return 2;
+    else return 0;
+  };
+
+  useEffect(() => {
+    setRoute(setActiveState(slug));
+  });
 
   const on = "bg-main text-black";
   const off = "bg-[#212121]";
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-10">
+    <nav className="grid grid-cols-1 md:grid-cols-10">
       <div className="flex justify-between items-center p-6 md:hidden">
         <Strips onClick={() => setStrip(true)} className="h-5 pointer" />
         <h3 className="text-white">Overview</h3>
@@ -86,12 +109,12 @@ export default function Home() {
             <ArrowDown className="w-5" />
           </div>
 
-          <div className="py-2 px-3 rounded-md flex items-center gap-2 w-40">
+          <div className="p-3 rounded-md flex items-center gap-2 w-40">
             <Settings className="w-7" /> <p className="w-full">Settings</p>
             <ArrowDown className="w-5" />
           </div>
 
-          <div className="py-2 px-3 rounded-md flex items-center gap-2 w-40">
+          <div className="p-3 rounded-md flex items-center gap-2 w-40">
             <Logout className="w-5" /> <p className="w-full">Sign Out</p>
             <ArrowDown className="w-5" />
           </div>
@@ -104,89 +127,101 @@ export default function Home() {
           background:
             "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
         }}
-        className={`col-span-2 h-full md:flex flex-col gap-14 fixed w-full md:static backdrop-blur-md z-20 ${
+        className={`col-span-2 h-full md:flex flex-col gap-8 fixed w-full md:static backdrop-blur-md z-20 ${
           strip ? "md:flex" : "hidden"
         }`}
       >
         <div className="flex flex-col items-center">
-          <Logo className="h-32 -mb-6" />
-          <h2>Dashboard</h2>
+          <Logo className="h-32" />
         </div>
 
-        <div className="flex flex-col gap-2 p-[60px] text-[#A4A4A4]">
-          <div className="py-2 px-3 rounded-md bg-[#212121] mb-4 flex justify-between items-center gap-2">
+        <div className="flex flex-col gap-6 p-[25px] text-[#A4A4A4]">
+          <div className="p-3 rounded-md bg-[#212121] mb-4 flex justify-between items-center gap-2">
             <div className="flex gap-2">
               <Search className="w-5" /> Search
             </div>
             <Shortcut className="w-5" />
           </div>
-          <div
-            onClick={() => setRoute(0)}
-            className={`py-2 px-3 rounded-md mb-4 flex items-center gap-2 pointer ${
+          <Link
+            href={"/"}
+            onClick={eventDefault}
+            className={`p-3 rounded-md mb-4 flex items-center gap-2 pointer text-[#A4A4A4] ${
               route == 0 ? on : off
             }`}
           >
-            <Nav1 className="w-5" /> Overview
-          </div>
+            {route == 0 ? <Nav1on className="w-5" /> : <Nav1 className="w-5" />}
+            Overview
+          </Link>
           <div className="flex flex-col">
             <div
               onClick={() => setUsers(!users)}
-              className={`py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121] ${
+              className={`p-3 rounded-md flex items-center gap-2 pointer ${
                 route == 1 ? on : off
               }`}
             >
-              <Nav2 className="w-5" /> <p className="w-full">Users</p>
+              {route == 1 ? (
+                <Nav2on className="w-5" />
+              ) : (
+                <Nav2 className="w-5" />
+              )}{" "}
+              <p className="w-full">Users</p>
               <ArrowDown className={`w-6 ${users && "rotate-180"}`} />
             </div>
             {users && (
-              <div className="flex flex-col gap-2 pt-2 px-10">
-                <p onClick={() => setRoute(1)} className="pointer">
-                  User
-                </p>
+              <div className="flex flex-col gap-6 pt-6 px-10">
+                <Link onClick={eventDefault} href={"/user"}>
+                  <p
+                    className={`${
+                      route == 1 ? "text-white" : "text-[#A4A4A4]"
+                    }`}
+                  >
+                    User
+                  </p>
+                </Link>
                 <p className="pointer">Role</p>
               </div>
             )}
           </div>
-          <div className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
+          <div className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
             <Nav3 className="w-5" /> <p className="w-full">Business</p>
           </div>
           <div className="flex flex-col">
             <div
               onClick={() => setTeams(!teams)}
-              className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]"
+              className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]"
             >
               <Nav4 className="w-5" /> <p className="w-full">Teams</p>
               <ArrowDown className={`w-6 ${teams && "rotate-180"}`} />
             </div>
             {teams && (
-              <div className="flex flex-col gap-2 pt-2 px-10">
+              <div className="flex flex-col gap-6 pt-6 px-10">
                 <p className="pointer">Owner</p>
                 <p className="pointer">Barber</p>
               </div>
             )}
           </div>
-          <div className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
+          <div className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
             <Nav5 className="w-5" /> <p className="w-full">Services</p>
           </div>
           <div className="flex flex-col">
             <div
               onClick={() => setBooking(!booking)}
-              className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]"
+              className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]"
             >
               <Nav6 className="w-5" /> <p className="w-full">Booking</p>
               <ArrowDown className={`w-6 ${booking && "rotate-180"}`} />
             </div>
             {booking && (
-              <div className="flex flex-col gap-2 pt-2 px-10">
+              <div className="flex flex-col gap-6 pt-6 px-10">
                 <p className="pointer">List</p>
                 <p className="pointer">Calendar</p>
               </div>
             )}
           </div>
-          <div className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
+          <div className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
             <Nav7 className="w-5" /> <p className="w-full">Customer</p>
           </div>
-          <div className="py-2 px-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
+          <div className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
             <Nav8 className="w-5" /> <p className="w-full">Marketing</p>
           </div>
         </div>
@@ -205,20 +240,22 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex gap-8 items-center relative">
-              <div
-                onClick={() => setNotif(!notif)}
-                className="pointer bg-[#212121] p-3 rounded-md"
-              >
-                <Bell className="w-6" />
+            <div className="flex items-center relative">
+              <div className="flex items-center gap-8">
+                <div
+                  onClick={() => setNotif(!notif)}
+                  className="pointer bg-[#212121] p-3 rounded-md"
+                >
+                  <Bell className="w-6" />
+                </div>
+                <div className="pointer bg-[#212121] p-3 rounded-md">
+                  <Nav2 className="w-6" />
+                </div>
+                <div className="flex flex-col items-center">
+                  <p>Administrator</p>
+                </div>
               </div>
-              <div className="pointer bg-[#212121] p-3 rounded-md">
-                <Nav2 className="w-6" />
-              </div>
-              <div className="flex flex-col items-center">
-                <p>Administrator</p>
-              </div>
-              <div onClick={() => setDot(!dot)} className="p-2 pointer">
+              <div onClick={() => setDot(!dot)} className="py-4 px-8 pointer">
                 <Dots className="h-6" />
               </div>
               {notif && (
@@ -230,7 +267,7 @@ export default function Home() {
                opacity-0 translate-y-[-20px] transition-all duration-300 ease-in-out
                animate-[fadeInDrop_0.3s_ease-in-out_forwards] backdrop-blur-md"
                 >
-                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
+                  <div className="p-3 rounded-md flex items-center gap-2">
                     <Person className="w-7" />
                     <p className="w-72">
                       New Incoming Booking From AldovaGuswantri / Booking Number
@@ -238,7 +275,7 @@ export default function Home() {
                     </p>
                     <Trash className="w-7" />
                   </div>
-                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
+                  <div className="p-3 rounded-md flex items-center gap-2">
                     <Person className="w-7" />
                     <p className="w-72">
                       New Incoming Booking From AldovaGuswantri / Booking Number
@@ -246,7 +283,7 @@ export default function Home() {
                     </p>
                     <Trash className="w-7" />
                   </div>
-                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
+                  <div className="p-3 rounded-md flex items-center gap-2">
                     <Person className="w-7" />
                     <p className="w-72">
                       New Incoming Booking From AldovaGuswantri / Booking Number
@@ -270,15 +307,15 @@ export default function Home() {
                opacity-0 translate-y-[-20px] transition-all duration-300 ease-in-out
                animate-[fadeInDrop_0.3s_ease-in-out_forwards] backdrop-blur-md"
                 >
-                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
+                  <div className="p-3 rounded-md flex items-center gap-2">
                     <Settings className="w-5" />
                     <p>Settings</p>
                   </div>
-                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
+                  <div className="p-3 rounded-md flex items-center gap-2">
                     <Nav2 className="w-5" />
                     <p>Profile</p>
                   </div>
-                  <div className="py-2 px-3 rounded-md flex items-center gap-2">
+                  <div className="p-3 rounded-md flex items-center gap-2">
                     <Logout className="w-5" />
                     <p>Sign Out</p>
                   </div>
@@ -288,8 +325,8 @@ export default function Home() {
           </div>
         </div>
 
-        {routes[route].dom}
+        {children}
       </div>
-    </div>
+    </nav>
   );
 }
