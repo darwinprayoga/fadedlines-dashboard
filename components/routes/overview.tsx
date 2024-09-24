@@ -13,7 +13,7 @@ export default function Overview() {
             background:
               "radial-gradient(83.11% 289.3% at 89.4% -6.2%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
           }}
-          className="px-14 py-8 gap-4 rounded-md flex flex-col h-min"
+          className="px-36 py-8 gap-4 rounded-md flex flex-col h-min"
         >
           <div className="flex justify-between gap-4">
             <div className="w-20 h-20 bg-[#2F2F2F] rounded-md hidden md:block"></div>

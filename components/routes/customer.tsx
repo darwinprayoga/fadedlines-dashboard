@@ -3,11 +3,11 @@ import { Search } from "../svg/search";
 import { Stepper } from "../svg/stepper";
 import { Trash } from "../svg/trash";
 
-export default function User() {
+export default function Customer() {
   return (
     <main className="flex flex-col gap-8">
       <div className="flex justify-between">
-        <h3 className="text-white">User Table</h3>
+        <h3 className="text-white">Customer Table</h3>
 
         <div className="flex gap-4">
           <div className="bg-[#3E3E3E] flex items-center rounded-md p-2 gap-4">
@@ -16,15 +16,9 @@ export default function User() {
               type="search"
               name="search"
               id="search"
-              placeholder="Find User"
+              placeholder="Find Customer"
               className="bg-[#3E3E3E]"
             />
-          </div>
-
-          <div className="bg-[#3E3E3E] flex items-center rounded-md p-2 gap-6 pointer">
-            <div className="w-4"></div>
-            <p>Add User</p>
-            <Add className="w-5" />
           </div>
         </div>
       </div>

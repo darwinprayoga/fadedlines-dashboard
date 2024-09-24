@@ -26,6 +26,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Nav1on } from "../svg/nav-1-on";
 import { Nav2on } from "../svg/nav-2-on";
+import { Nav6on } from "../svg/nav-6-on";
+import { Nav7on } from "../svg/nav-7-on";
 
 export default function Navbar({
   children,
@@ -53,7 +55,8 @@ export default function Navbar({
 
   const setActiveState = (currentSlug: string): number => {
     if (currentSlug.includes("user")) return 1;
-    // else if (currentSlug.includes("showcase")) return 2;
+    else if (currentSlug.includes("list")) return 8;
+    else if (currentSlug.includes("customer")) return 10;
     else return 0;
   };
 
@@ -163,13 +166,13 @@ export default function Navbar({
                 <Nav2on className="w-5" />
               ) : (
                 <Nav2 className="w-5" />
-              )}{" "}
+              )}
               <p className="w-full">Users</p>
               <ArrowDown className={`w-6 ${users && "rotate-180"}`} />
             </div>
             {users && (
               <div className="flex flex-col gap-6 pt-6 px-10">
-                <Link onClick={eventDefault} href={"/user"}>
+                <Link onClick={eventDefault} href={"/users/user"}>
                   <p
                     className={`${
                       route == 1 ? "text-white" : "text-[#A4A4A4]"
@@ -206,21 +209,47 @@ export default function Navbar({
           <div className="flex flex-col">
             <div
               onClick={() => setBooking(!booking)}
-              className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]"
+              className={`p-3 rounded-md flex items-center gap-2 pointer ${
+                route == 8 ? on : off
+              }`}
             >
-              <Nav6 className="w-5" /> <p className="w-full">Booking</p>
+              {route == 8 ? (
+                <Nav6on className="w-5" />
+              ) : (
+                <Nav6 className="w-5" />
+              )}
+              <p className="w-full">Booking</p>
               <ArrowDown className={`w-6 ${booking && "rotate-180"}`} />
             </div>
             {booking && (
               <div className="flex flex-col gap-6 pt-6 px-10">
-                <p className="pointer">List</p>
+                <Link onClick={eventDefault} href={"/booking/list"}>
+                  <p
+                    className={`${
+                      route == 8 ? "text-white" : "text-[#A4A4A4]"
+                    }`}
+                  >
+                    List
+                  </p>
+                </Link>
                 <p className="pointer">Calendar</p>
               </div>
             )}
           </div>
-          <div className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
-            <Nav7 className="w-5" /> <p className="w-full">Customer</p>
-          </div>
+          <Link
+            onClick={eventDefault}
+            href={"/customer"}
+            className={`p-3 rounded-md mb-4 flex items-center gap-2 text-[#A4A4A4] ${
+              route == 10 ? on : off
+            }`}
+          >
+            {route == 10 ? (
+              <Nav7on className="w-5" />
+            ) : (
+              <Nav7 className="w-5" />
+            )}
+            <p className="w-full">Customer</p>
+          </Link>
           <div className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
             <Nav8 className="w-5" /> <p className="w-full">Marketing</p>
           </div>
