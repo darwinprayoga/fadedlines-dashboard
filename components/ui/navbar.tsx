@@ -1,6 +1,5 @@
 "use client";
 
-import Overview from "@/components/routes/overview";
 import { ArrowDown } from "@/components/svg/arrow-down";
 import { Bell } from "@/components/svg/bell";
 import { Dots } from "@/components/svg/dots";
@@ -21,7 +20,6 @@ import { Strips } from "@/components/svg/strips";
 import { Trash } from "@/components/svg/trash";
 import { Person } from "@/components/svg/person";
 import { useEffect, useState } from "react";
-import User from "@/components/routes/user";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Nav1on } from "../svg/nav-1-on";
@@ -54,7 +52,8 @@ export default function Navbar({
   const [route, setRoute] = useState(0);
 
   const setActiveState = (currentSlug: string): number => {
-    if (currentSlug.includes("user")) return 1;
+    if (currentSlug == "/users/user") return 1;
+    else if (currentSlug == "/users/role") return 2;
     else if (currentSlug.includes("list")) return 8;
     else if (currentSlug.includes("customer")) return 10;
     else return 0;
@@ -159,10 +158,10 @@ export default function Navbar({
             <div
               onClick={() => setUsers(!users)}
               className={`p-3 rounded-md flex items-center gap-2 pointer ${
-                route == 1 ? on : off
+                [1, 2].includes(route) ? on : off
               }`}
             >
-              {route == 1 ? (
+              {[1, 2].includes(route) ? (
                 <Nav2on className="w-5" />
               ) : (
                 <Nav2 className="w-5" />
@@ -181,7 +180,15 @@ export default function Navbar({
                     User
                   </p>
                 </Link>
-                <p className="pointer">Role</p>
+                <Link onClick={eventDefault} href={"/users/role"}>
+                  <p
+                    className={`${
+                      route == 2 ? "text-white" : "text-[#A4A4A4]"
+                    }`}
+                  >
+                    Role
+                  </p>
+                </Link>
               </div>
             )}
           </div>
