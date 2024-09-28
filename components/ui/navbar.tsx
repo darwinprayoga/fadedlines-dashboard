@@ -26,6 +26,7 @@ import { Nav1on } from "../svg/nav-1-on";
 import { Nav2on } from "../svg/nav-2-on";
 import { Nav6on } from "../svg/nav-6-on";
 import { Nav7on } from "../svg/nav-7-on";
+import { Nav3on } from "../svg/nav-3-on";
 
 export default function Navbar({
   children,
@@ -54,6 +55,7 @@ export default function Navbar({
   const setActiveState = (currentSlug: string): number => {
     if (currentSlug == "/users/user") return 1;
     else if (currentSlug == "/users/role") return 2;
+    else if (currentSlug.includes("business")) return 3;
     else if (currentSlug.includes("list")) return 8;
     else if (currentSlug.includes("customer")) return 10;
     else return 0;
@@ -192,9 +194,16 @@ export default function Navbar({
               </div>
             )}
           </div>
-          <div className="p-3 rounded-md flex items-center gap-2 pointer bg-[#212121]">
-            <Nav3 className="w-5" /> <p className="w-full">Business</p>
-          </div>
+          <Link
+            onClick={eventDefault}
+            href={"/business"}
+            className={`p-3 rounded-md flex items-center gap-2 pointer text-[#A4A4A4] ${
+              route == 3 ? on : off
+            }`}
+          >
+            {route == 3 ? <Nav3on className="w-5" /> : <Nav3 className="w-5" />}
+            <p className="w-full">Business</p>
+          </Link>
           <div className="flex flex-col">
             <div
               onClick={() => setTeams(!teams)}
@@ -246,7 +255,7 @@ export default function Navbar({
           <Link
             onClick={eventDefault}
             href={"/customer"}
-            className={`p-3 rounded-md mb-4 flex items-center gap-2 text-[#A4A4A4] ${
+            className={`p-3 rounded-md flex items-center gap-2 text-[#A4A4A4] ${
               route == 10 ? on : off
             }`}
           >
