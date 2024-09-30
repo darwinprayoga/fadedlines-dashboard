@@ -208,11 +208,9 @@ export default function List() {
             <tr>
               <th className="text-left p-3 px-5">No</th>
               <th className="text-left p-3 px-5">Name</th>
-              <th className="text-left p-3 px-5">Email</th>
-              <th className="text-left p-3 px-5">Phone</th>
-              <th className="text-left p-3 px-5">Created At</th>
-              <th className="text-left p-3 px-5">Updated At</th>
-              <th className="text-left p-3 px-5">Role</th>
+              <th className="text-left p-3 px-5">Time</th>
+              <th className="text-left p-3 px-5">Services</th>
+              <th className="text-left p-3 px-5">Barber</th>
               <th className="text-left p-3 px-5">Action</th>
             </tr>
 
@@ -229,38 +227,20 @@ export default function List() {
               </td>
               <td className="p-3 px-5">
                 <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
+                  type="text"
+                  value="9:00AM - 10:00AM"
+                  className="bg-transparent w-80"
                 />
               </td>
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="Hair & Beard"
                   className="bg-transparent"
                 />
               </td>
               <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <input type="text" value="Josh" className="bg-transparent" />
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -293,38 +273,20 @@ export default function List() {
               </td>
               <td className="p-3 px-5">
                 <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
+                  type="text"
+                  value="9:00AM - 10:00AM"
+                  className="bg-transparent w-80"
                 />
               </td>
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="Hair & Beard"
                   className="bg-transparent"
                 />
               </td>
               <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <input type="text" value="Josh" className="bg-transparent" />
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -357,38 +319,20 @@ export default function List() {
               </td>
               <td className="p-3 px-5">
                 <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
+                  type="text"
+                  value="9:00AM - 10:00AM"
+                  className="bg-transparent w-80"
                 />
               </td>
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="Hair & Beard"
                   className="bg-transparent"
                 />
               </td>
               <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <input type="text" value="Josh" className="bg-transparent" />
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -421,38 +365,20 @@ export default function List() {
               </td>
               <td className="p-3 px-5">
                 <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
+                  type="text"
+                  value="9:00AM - 10:00AM"
+                  className="bg-transparent w-80"
                 />
               </td>
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="Hair & Beard"
                   className="bg-transparent"
                 />
               </td>
               <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <input type="text" value="Josh" className="bg-transparent" />
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -485,38 +411,20 @@ export default function List() {
               </td>
               <td className="p-3 px-5">
                 <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
+                  type="text"
+                  value="9:00AM - 10:00AM"
+                  className="bg-transparent w-80"
                 />
               </td>
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="Hair & Beard"
                   className="bg-transparent"
                 />
               </td>
               <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <input type="text" value="Josh" className="bg-transparent" />
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -549,38 +457,20 @@ export default function List() {
               </td>
               <td className="p-3 px-5">
                 <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
+                  type="text"
+                  value="9:00AM - 10:00AM"
+                  className="bg-transparent w-80"
                 />
               </td>
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="Hair & Beard"
                   className="bg-transparent"
                 />
               </td>
               <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <input type="text" value="Josh" className="bg-transparent" />
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -613,38 +503,20 @@ export default function List() {
               </td>
               <td className="p-3 px-5">
                 <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
+                  type="text"
+                  value="9:00AM - 10:00AM"
+                  className="bg-transparent w-80"
                 />
               </td>
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="Hair & Beard"
                   className="bg-transparent"
                 />
               </td>
               <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <input type="text" value="Josh" className="bg-transparent" />
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -677,38 +549,20 @@ export default function List() {
               </td>
               <td className="p-3 px-5">
                 <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
+                  type="text"
+                  value="9:00AM - 10:00AM"
+                  className="bg-transparent w-80"
                 />
               </td>
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="Hair & Beard"
                   className="bg-transparent"
                 />
               </td>
               <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <input type="text" value="Josh" className="bg-transparent" />
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button

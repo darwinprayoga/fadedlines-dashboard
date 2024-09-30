@@ -1,10 +1,36 @@
+"use client";
+
 import { ArrowDown } from "../svg/arrow-down";
 import { Dummy2 } from "../svg/dummy-2";
 import { Dummy4 } from "../svg/dummy-4";
 import { Dummy5 } from "../svg/dummy-5";
 import { Stepper } from "../svg/stepper";
+import dynamic from "next/dynamic";
+import { useState } from "react";
+// Dynamically import ApexCharts to prevent SSR issues
+const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export default function Overview() {
+  const [chartOptions, setChartOptions] = useState({
+    series: [
+      {
+        data: [
+          {
+            x: new Date("2024-02-09").getTime(),
+            y: 76,
+          },
+          {
+            x: new Date("2024-02-09").getTime(),
+            y: 76,
+          },
+        ],
+      },
+    ],
+    xaxis: {
+      type: "datetime",
+    },
+  });
+
   return (
     <main className="flex flex-col">
       <div className="flex flex-col md:flex-row gap-10">
@@ -81,7 +107,12 @@ export default function Overview() {
           </div>
         </div>
 
-        <div className="flex overflow-x-scroll md:-mx-8 md:pl-8">
+        <div
+          style={{
+            scrollbarWidth: "none",
+          }}
+          className="flex overflow-x-scroll md:-mx-8 md:pl-8 scroll-"
+        >
           <div className="flex flex-col md:flex-row gap-4 w-full md:w-max">
             <div
               style={{
@@ -227,8 +258,18 @@ export default function Overview() {
           </div>
         </div>
 
-        <Dummy4 className="hidden md:block" />
-        <Dummy5 className="md:hidden" />
+        {/* <Dummy4 className="hidden md:block" />
+        <Dummy5 className="md:hidden" /> */}
+
+        <div id="chart">
+          <ApexChart
+            //@ts-ignore
+            options={chartOptions}
+            series={chartOptions.series}
+            type="line"
+            height={350}
+          />
+        </div>
       </div>
     </main>
   );

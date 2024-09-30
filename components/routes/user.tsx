@@ -404,7 +404,7 @@ export default function User() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -429,11 +429,17 @@ export default function User() {
                 />
               </td>
               <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <div className="flex gap-1">
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Admin</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Owner</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Customer</p>
+                  </div>
+                </div>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -468,7 +474,7 @@ export default function User() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -493,11 +499,17 @@ export default function User() {
                 />
               </td>
               <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <div className="flex gap-1">
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Admin</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Owner</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Customer</p>
+                  </div>
+                </div>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -532,7 +544,7 @@ export default function User() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -557,11 +569,17 @@ export default function User() {
                 />
               </td>
               <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <div className="flex gap-1">
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Admin</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Owner</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Customer</p>
+                  </div>
+                </div>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -596,7 +614,7 @@ export default function User() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -621,11 +639,17 @@ export default function User() {
                 />
               </td>
               <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <div className="flex gap-1">
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Admin</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Owner</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Customer</p>
+                  </div>
+                </div>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -660,7 +684,7 @@ export default function User() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -685,11 +709,17 @@ export default function User() {
                 />
               </td>
               <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <div className="flex gap-1">
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Admin</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Owner</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Customer</p>
+                  </div>
+                </div>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -724,7 +754,7 @@ export default function User() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -749,11 +779,17 @@ export default function User() {
                 />
               </td>
               <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <div className="flex gap-1">
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Admin</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Owner</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Customer</p>
+                  </div>
+                </div>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -788,7 +824,7 @@ export default function User() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -813,11 +849,17 @@ export default function User() {
                 />
               </td>
               <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <div className="flex gap-1">
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Admin</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Owner</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Customer</p>
+                  </div>
+                </div>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -852,7 +894,7 @@ export default function User() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -877,11 +919,17 @@ export default function User() {
                 />
               </td>
               <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
+                <div className="flex gap-1">
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Admin</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Owner</p>
+                  </div>
+                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                    <p>Customer</p>
+                  </div>
+                </div>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button

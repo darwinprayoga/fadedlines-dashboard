@@ -57,6 +57,7 @@ export default function Navbar({
     else if (currentSlug == "/users/role") return 2;
     else if (currentSlug.includes("business")) return 3;
     else if (currentSlug.includes("list")) return 8;
+    else if (currentSlug.includes("calendar")) return 9;
     else if (currentSlug.includes("customer")) return 10;
     else return 0;
   };
@@ -69,7 +70,7 @@ export default function Navbar({
   const off = "bg-[#212121]";
 
   return (
-    <nav className="grid grid-cols-1 md:grid-cols-10">
+    <nav className="grid grid-cols-1 md:grid-cols-10 fixed inset-0 max-w-screen-3xl mx-auto">
       <div className="flex justify-between items-center p-6 md:hidden">
         <Strips onClick={() => setStrip(true)} className="h-5 pointer" />
         <h3 className="text-white">Overview</h3>
@@ -131,7 +132,7 @@ export default function Navbar({
           background:
             "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
         }}
-        className={`col-span-2 h-full md:flex flex-col gap-8 fixed w-full md:static backdrop-blur-md z-20 ${
+        className={`col-span-2 h-full md:flex flex-col gap-8 fixed w-full md:static backdrop-blur-md overflow-y-auto z-20 ${
           strip ? "md:flex" : "hidden"
         }`}
       >
@@ -226,10 +227,10 @@ export default function Navbar({
             <div
               onClick={() => setBooking(!booking)}
               className={`p-3 rounded-md flex items-center gap-2 pointer ${
-                route == 8 ? on : off
+                [8, 9].includes(route) ? on : off
               }`}
             >
-              {route == 8 ? (
+              {[8, 9].includes(route) ? (
                 <Nav6on className="w-5" />
               ) : (
                 <Nav6 className="w-5" />
@@ -248,7 +249,16 @@ export default function Navbar({
                     List
                   </p>
                 </Link>
-                <p className="pointer">Calendar</p>
+
+                <Link onClick={eventDefault} href={"/booking/calendar"}>
+                  <p
+                    className={`${
+                      route == 9 ? "text-white" : "text-[#A4A4A4]"
+                    }`}
+                  >
+                    Calendar
+                  </p>
+                </Link>
               </div>
             )}
           </div>
@@ -272,7 +282,7 @@ export default function Navbar({
         </div>
       </div>
 
-      <div className="col-span-8 h-full flex flex-col p-6 md:p-8">
+      <div className="col-span-8 h-full flex flex-col p-6 md:p-8 overflow-y-auto">
         <div className="hidden md:flex py-6 md:py-8 items-center justify-between">
           <h2>Overview</h2>
 

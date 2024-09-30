@@ -235,9 +235,7 @@ export default function Customer() {
               <th className="text-left p-3 px-5">Name</th>
               <th className="text-left p-3 px-5">Email</th>
               <th className="text-left p-3 px-5">Phone</th>
-              <th className="text-left p-3 px-5">Created At</th>
-              <th className="text-left p-3 px-5">Updated At</th>
-              <th className="text-left p-3 px-5">Role</th>
+              <th className="text-left p-3 px-5">Last Visited</th>
               <th className="text-left p-3 px-5">Action</th>
             </tr>
 
@@ -256,7 +254,7 @@ export default function Customer() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -269,23 +267,9 @@ export default function Customer() {
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="3 months ago"
                   className="bg-transparent"
                 />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -320,7 +304,7 @@ export default function Customer() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -333,23 +317,9 @@ export default function Customer() {
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="3 months ago"
                   className="bg-transparent"
                 />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -384,7 +354,7 @@ export default function Customer() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -397,23 +367,9 @@ export default function Customer() {
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="3 months ago"
                   className="bg-transparent"
                 />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -448,7 +404,7 @@ export default function Customer() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -461,23 +417,9 @@ export default function Customer() {
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="3 months ago"
                   className="bg-transparent"
                 />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -512,7 +454,7 @@ export default function Customer() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -525,23 +467,9 @@ export default function Customer() {
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="3 months ago"
                   className="bg-transparent"
                 />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -576,7 +504,7 @@ export default function Customer() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -589,23 +517,9 @@ export default function Customer() {
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="3 months ago"
                   className="bg-transparent"
                 />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -640,7 +554,7 @@ export default function Customer() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -653,23 +567,9 @@ export default function Customer() {
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="3 months ago"
                   className="bg-transparent"
                 />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
@@ -704,7 +604,7 @@ export default function Customer() {
                 <input
                   type="email"
                   value="Dummy@Gmail.com"
-                  className="bg-transparent"
+                  className="bg-transparent w-60"
                 />
               </td>
               <td className="p-3 px-5">
@@ -717,23 +617,9 @@ export default function Customer() {
               <td className="p-3 px-5">
                 <input
                   type="text"
-                  value="10/09/2024"
+                  value="3 months ago"
                   className="bg-transparent"
                 />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <select value="user.role" className="bg-transparent">
-                  <option value="user">Admin</option>
-                  <option value="Owner">Owner</option>
-                  <option value="Customer">Customer</option>
-                </select>
               </td>
               <td className="p-3 px-5 flex justify-end">
                 <button
