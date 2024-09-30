@@ -359,10 +359,18 @@ export default function Role() {
                 />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
                 <select value="user.role" className="bg-transparent">
@@ -415,10 +423,18 @@ export default function Role() {
                 />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
                 <select value="user.role" className="bg-transparent">
@@ -471,10 +487,18 @@ export default function Role() {
                 />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
                 <select value="user.role" className="bg-transparent">
@@ -527,10 +551,18 @@ export default function Role() {
                 />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
                 <select value="user.role" className="bg-transparent">
@@ -583,10 +615,18 @@ export default function Role() {
                 />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
                 <select value="user.role" className="bg-transparent">
@@ -639,10 +679,18 @@ export default function Role() {
                 />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
                 <select value="user.role" className="bg-transparent">
@@ -695,10 +743,18 @@ export default function Role() {
                 />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
                 <select value="user.role" className="bg-transparent">
@@ -751,10 +807,18 @@ export default function Role() {
                 />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
-                <input type="date" className="bg-transparent" />
+                <input
+                  type="text"
+                  value="10/09/2024"
+                  className="bg-transparent"
+                />
               </td>
               <td className="p-3 px-5">
                 <select value="user.role" className="bg-transparent">
