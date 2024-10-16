@@ -9,6 +9,7 @@ import { Next } from "../svg/next";
 import { Back } from "../svg/back";
 import { ArrowDown } from "../svg/arrow-down";
 import { X } from "../svg/x";
+import { getUserList } from "@/app/utils/api/fadedlinesApis";
 
 export default function User() {
   const [create, setCreate] = useState(false);
@@ -17,15 +18,35 @@ export default function User() {
   const [step, setStep] = useState(1);
   const containerRef: any = useRef(null);
 
+  const [users, setUsers] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const userList = await getUserList();
+        setUsers(userList.data);
+      } catch (err) {
+        setError('Failed to fetch user list.');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (
         containerRef.current &&
         !containerRef.current.contains(event.target)
       ) {
-        setCreate(false); // Close the modal
-        setRemove(false); // Close the modal
-        setDetails(false); // Close the modal
+        setCreate(false);
+        setRemove(false);
+        setDetails(false);
       }
     };
 
@@ -157,9 +178,8 @@ export default function User() {
               <Back onClick={() => setStep(1)} className="w-5 pointer" />
               <div className="flex gap-1">
                 <div
-                  className={`bg-main rounded-full w-2 h-2 ${
-                    step == 2 && "order-last"
-                  }`}
+                  className={`bg-main rounded-full w-2 h-2 ${step == 2 && "order-last"
+                    }`}
                 ></div>
                 <div className="bg-[#474747] rounded-full w-2 h-2"></div>
               </div>
@@ -388,566 +408,72 @@ export default function User() {
               <th className="text-left p-3 px-5">Role</th>
               <th className="text-left p-3 px-5">Action</th>
             </tr>
+            {users.map((user, index) => (
+              <tr className="hover:bg-white/5">
+                <td className="p-3 px-5">
+                  <p>{index + 1}</p>
+                </td>
+                <td className="p-3 px-5">
+                  <input
+                    type="text"
+                    value={user.name}
+                    className="bg-transparent"
+                  />
+                </td>
+                <td className="p-3 px-5">
+                  <input
+                    type="email"
+                    value={user.email}
+                    className="bg-transparent w-60"
+                  />
+                </td>
+                <td className="p-3 px-5">
+                  <input
+                    type="tel"
+                    value={user.phone}
+                    className="bg-transparent"
+                  />
+                </td>
+                <td className="p-3 px-5">
+                  <input
+                    type="text"
+                    value={user.createdAt}
+                    className="bg-transparent"
+                  />
+                </td>
+                <td className="p-3 px-5">
+                  <input
+                    type="text"
+                    value={user.updatedAt}
+                    className="bg-transparent"
+                  />
+                </td>
+                <td className="p-3 px-5">
+                  <div className="flex gap-1">
+                    <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
+                      <p>{user.role}</p>
+                    </div>
+                  </div>
+                </td>
+                <td className="p-3 px-5 flex justify-end">
+                  <button
+                    onClick={() => setRemove(true)}
+                    type="button"
+                    className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
+                  >
+                    <Trash className="w-5" />
+                  </button>
+                  <button
+                    onClick={() => setDetails(true)}
+                    type="button"
+                    className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            ))}
 
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>1</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent w-60"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <div className="flex gap-1">
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Admin</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Owner</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Customer</p>
-                  </div>
-                </div>
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>2</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent w-60"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <div className="flex gap-1">
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Admin</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Owner</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Customer</p>
-                  </div>
-                </div>
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>3</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent w-60"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <div className="flex gap-1">
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Admin</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Owner</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Customer</p>
-                  </div>
-                </div>
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>4</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent w-60"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <div className="flex gap-1">
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Admin</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Owner</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Customer</p>
-                  </div>
-                </div>
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>5</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent w-60"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <div className="flex gap-1">
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Admin</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Owner</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Customer</p>
-                  </div>
-                </div>
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>6</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent w-60"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <div className="flex gap-1">
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Admin</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Owner</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Customer</p>
-                  </div>
-                </div>
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>7</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent w-60"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <div className="flex gap-1">
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Admin</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Owner</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Customer</p>
-                  </div>
-                </div>
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>8</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="email"
-                  value="Dummy@Gmail.com"
-                  className="bg-transparent w-60"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="tel"
-                  value="6286969696969"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="10/09/2024"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <div className="flex gap-1">
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Admin</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Owner</p>
-                  </div>
-                  <div className="px-2 py-1 rounded-md flex justify-center items-center bg-[#3E3E3E]">
-                    <p>Customer</p>
-                  </div>
-                </div>
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>

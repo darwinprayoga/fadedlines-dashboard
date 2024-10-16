@@ -6,6 +6,7 @@ import { Search } from "../svg/search";
 import { Stepper } from "../svg/stepper";
 import { Trash } from "../svg/trash";
 import { X } from "../svg/x";
+import { getBarberDetail, getBookingList, getCustomerDetail } from "@/app/utils/api/fadedlinesApis";
 
 export default function List() {
   const [create, setCreate] = useState(false);
@@ -14,15 +15,43 @@ export default function List() {
   const [step, setStep] = useState(1);
   const containerRef: any = useRef(null);
 
+  const [bookings, setBookings] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const barberId = 'TMsUTh-Cz8CnKfvH';
+  const today = new Date();
+  const startFrom = today.toISOString();
+  const endAt = new Date(today);
+  endAt.setDate(today.getDate() + 5);
+  const endAtISOString = endAt.toISOString();
+
+  useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const data = await getBookingList(barberId, startFrom, endAtISOString, 'Organic');
+
+        setBookings(data);
+      } catch (err) {
+        setError('Failed to fetch bookings');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBookings();
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (
         containerRef.current &&
         !containerRef.current.contains(event.target)
       ) {
-        setCreate(false); // Close the modal
-        setRemove(false); // Close the modal
-        setDetails(false); // Close the modal
+        setCreate(false);
+        setRemove(false);
+        setDetails(false);
       }
     };
 
@@ -214,373 +243,53 @@ export default function List() {
               <th className="text-left p-3 px-5">Action</th>
             </tr>
 
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>1</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="9:00AM - 10:00AM"
-                  className="bg-transparent w-80"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="Hair & Beard"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input type="text" value="Josh" className="bg-transparent" />
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
+            {bookings.map((booking, index) => (
+              <tr className="hover:bg-white/5">
+                <td className="p-3 px-5">
+                  <p>{index + 1}</p>
+                </td>
+                <td className="p-3 px-5">
+                  <input
+                    type="text"
+                    value={booking.name}
+                    className="bg-transparent"
+                  />
+                </td>
+                <td className="p-3 px-5">
+                  <input
+                    type="text"
+                    value={booking.time}
+                    className="bg-transparent w-80"
+                  />
+                </td>
+                <td className="p-3 px-5">
+                  <input
+                    type="text"
+                    value={booking.services}
+                    className="bg-transparent"
+                  />
+                </td>
+                <td className="p-3 px-5">
+                  <input type="text" value={booking.barber} className="bg-transparent" />
+                </td>
+                <td className="p-3 px-5 flex justify-end">
+                  <button
+                    onClick={() => setRemove(true)}
+                    type="button"
+                    className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
+                  >
+                    <Trash className="w-5" />
+                  </button>
+                  <button
+                    onClick={() => setDetails(true)}
+                    type="button"
+                    className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>))}
 
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>2</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="9:00AM - 10:00AM"
-                  className="bg-transparent w-80"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="Hair & Beard"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input type="text" value="Josh" className="bg-transparent" />
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>3</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="9:00AM - 10:00AM"
-                  className="bg-transparent w-80"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="Hair & Beard"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input type="text" value="Josh" className="bg-transparent" />
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>4</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="9:00AM - 10:00AM"
-                  className="bg-transparent w-80"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="Hair & Beard"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input type="text" value="Josh" className="bg-transparent" />
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>5</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="9:00AM - 10:00AM"
-                  className="bg-transparent w-80"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="Hair & Beard"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input type="text" value="Josh" className="bg-transparent" />
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>6</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="9:00AM - 10:00AM"
-                  className="bg-transparent w-80"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="Hair & Beard"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input type="text" value="Josh" className="bg-transparent" />
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>7</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="9:00AM - 10:00AM"
-                  className="bg-transparent w-80"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="Hair & Beard"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input type="text" value="Josh" className="bg-transparent" />
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-
-            <tr className="hover:bg-white/5">
-              <td className="p-3 px-5">
-                <p>8</p>
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="DummyName"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="9:00AM - 10:00AM"
-                  className="bg-transparent w-80"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input
-                  type="text"
-                  value="Hair & Beard"
-                  className="bg-transparent"
-                />
-              </td>
-              <td className="p-3 px-5">
-                <input type="text" value="Josh" className="bg-transparent" />
-              </td>
-              <td className="p-3 px-5 flex justify-end">
-                <button
-                  onClick={() => setRemove(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#923B3B] hover:shadow-none py-3 px-5 h-min"
-                >
-                  <Trash className="w-5" />
-                </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  type="button"
-                  className="mr-3 text-sm bg-[#3E3E3E] hover:shadow-none py-3 px-5 h-min"
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>

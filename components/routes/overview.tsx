@@ -1,13 +1,9 @@
 "use client";
 
 import { ArrowDown } from "../svg/arrow-down";
-import { Dummy2 } from "../svg/dummy-2";
-import { Dummy4 } from "../svg/dummy-4";
-import { Dummy5 } from "../svg/dummy-5";
 import { Stepper } from "../svg/stepper";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-// Dynamically import ApexCharts to prevent SSR issues
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export default function Overview() {
@@ -79,7 +75,7 @@ export default function Overview() {
           </div>
         </div>
 
-        <Dummy2 className="md:h-[144px]" />
+
       </div>
       <div className="flex flex-col">
         <div className="flex flex-col md:flex-row items-center gap-2 md:gap-14 px-6 py-10">

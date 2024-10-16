@@ -43,9 +43,9 @@ export default function Navbar({
   const [booking, setBooking] = useState(false);
 
   function eventDefault() {
-    setUsers(false);
-    setTeams(false);
-    setBooking(false);
+    // setUsers(false);
+    // setTeams(false);
+    // setBooking(false);
   }
 
   //detect route
@@ -83,9 +83,8 @@ export default function Navbar({
           background:
             "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
         }}
-        className={`col-span-2 h-full flex-col gap-14 fixed w-full md:static backdrop-blur-md z-20 ${
-          dot ? "flex md:hidden" : "hidden"
-        }`}
+        className={`col-span-2 h-full flex-col gap-14 fixed w-full md:static backdrop-blur-md z-20 ${dot ? "flex md:hidden" : "hidden"
+          }`}
       >
         <div className="flex flex-col gap-8 py-14 px-10 items-center">
           <div className="flex flex-col gap-2 items-center">
@@ -132,9 +131,8 @@ export default function Navbar({
           background:
             "radial-gradient(87.25% 55.2% at 100% 100%, rgba(54, 54, 54, 0.7) 0%, rgba(23, 23, 23, 0.7) 100%)",
         }}
-        className={`col-span-2 h-full md:flex flex-col gap-8 fixed w-full md:static backdrop-blur-md overflow-y-auto z-20 ${
-          strip ? "md:flex" : "hidden"
-        }`}
+        className={`col-span-2 h-full md:flex flex-col gap-8 fixed w-full md:static backdrop-blur-md overflow-y-auto z-20 ${strip ? "md:flex" : "hidden"
+          }`}
       >
         <div className="flex flex-col items-center">
           <Logo className="h-32" />
@@ -150,9 +148,8 @@ export default function Navbar({
           <Link
             href={"/"}
             onClick={eventDefault}
-            className={`p-3 rounded-md mb-4 flex items-center gap-2 pointer text-[#A4A4A4] ${
-              route == 0 ? on : off
-            }`}
+            className={`p-3 rounded-md mb-4 flex items-center gap-2 pointer text-[#A4A4A4] ${route == 0 ? on : off
+              }`}
           >
             {route == 0 ? <Nav1on className="w-5" /> : <Nav1 className="w-5" />}
             Overview
@@ -160,9 +157,8 @@ export default function Navbar({
           <div className="flex flex-col">
             <div
               onClick={() => setUsers(!users)}
-              className={`p-3 rounded-md flex items-center gap-2 pointer ${
-                [1, 2].includes(route) ? on : off
-              }`}
+              className={`p-3 rounded-md flex items-center gap-2 pointer ${[1, 2].includes(route) ? on : off
+                }`}
             >
               {[1, 2].includes(route) ? (
                 <Nav2on className="w-5" />
@@ -176,18 +172,16 @@ export default function Navbar({
               <div className="flex flex-col gap-6 pt-6 px-10">
                 <Link onClick={eventDefault} href={"/users/user"}>
                   <p
-                    className={`${
-                      route == 1 ? "text-white" : "text-[#A4A4A4]"
-                    }`}
+                    className={`${route == 1 ? "text-white" : "text-[#A4A4A4]"
+                      }`}
                   >
                     User
                   </p>
                 </Link>
                 <Link onClick={eventDefault} href={"/users/role"}>
                   <p
-                    className={`${
-                      route == 2 ? "text-white" : "text-[#A4A4A4]"
-                    }`}
+                    className={`${route == 2 ? "text-white" : "text-[#A4A4A4]"
+                      }`}
                   >
                     Role
                   </p>
@@ -198,9 +192,8 @@ export default function Navbar({
           <Link
             onClick={eventDefault}
             href={"/business"}
-            className={`p-3 rounded-md flex items-center gap-2 pointer text-[#A4A4A4] ${
-              route == 3 ? on : off
-            }`}
+            className={`p-3 rounded-md flex items-center gap-2 pointer text-[#A4A4A4] ${route == 3 ? on : off
+              }`}
           >
             {route == 3 ? <Nav3on className="w-5" /> : <Nav3 className="w-5" />}
             <p className="w-full">Business</p>
@@ -226,9 +219,8 @@ export default function Navbar({
           <div className="flex flex-col">
             <div
               onClick={() => setBooking(!booking)}
-              className={`p-3 rounded-md flex items-center gap-2 pointer ${
-                [8, 9].includes(route) ? on : off
-              }`}
+              className={`p-3 rounded-md flex items-center gap-2 pointer ${[8, 9].includes(route) ? on : off
+                }`}
             >
               {[8, 9].includes(route) ? (
                 <Nav6on className="w-5" />
@@ -242,9 +234,8 @@ export default function Navbar({
               <div className="flex flex-col gap-6 pt-6 px-10">
                 <Link onClick={eventDefault} href={"/booking/list"}>
                   <p
-                    className={`${
-                      route == 8 ? "text-white" : "text-[#A4A4A4]"
-                    }`}
+                    className={`${route == 8 ? "text-white" : "text-[#A4A4A4]"
+                      }`}
                   >
                     List
                   </p>
@@ -252,9 +243,8 @@ export default function Navbar({
 
                 <Link onClick={eventDefault} href={"/booking/calendar"}>
                   <p
-                    className={`${
-                      route == 9 ? "text-white" : "text-[#A4A4A4]"
-                    }`}
+                    className={`${route == 9 ? "text-white" : "text-[#A4A4A4]"
+                      }`}
                   >
                     Calendar
                   </p>
@@ -265,9 +255,8 @@ export default function Navbar({
           <Link
             onClick={eventDefault}
             href={"/customer"}
-            className={`p-3 rounded-md flex items-center gap-2 text-[#A4A4A4] ${
-              route == 10 ? on : off
-            }`}
+            className={`p-3 rounded-md flex items-center gap-2 text-[#A4A4A4] ${route == 10 ? on : off
+              }`}
           >
             {route == 10 ? (
               <Nav7on className="w-5" />

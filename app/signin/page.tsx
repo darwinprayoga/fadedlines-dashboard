@@ -1,6 +1,40 @@
+'use client'
 import { Logo } from "@/components/svg/logo";
+import { useEffect, useState } from "react";
+import { login } from "../utils/api/fadedlinesApis";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await login({ email, password });
+      const token = response.token;
+      if (token) {
+        setLoading(false)
+        localStorage.setItem('token', token);
+        router.push('/');
+      } else {
+        setError('Login failed. Token not received.');
+      }
+      console.log('Login successful:', response);
+    } catch (err) {
+      setError('Login failed. Please check your credentials.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="bg-[url('/assets/bg-login.png')] bg-cover h-screen flex justify-between items-center md:items-start p-6">
       <Logo className="h-14 hidden md:block" />
@@ -27,6 +61,8 @@ export default function Home() {
               type="email"
               name="email"
               id="email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
 
@@ -37,6 +73,8 @@ export default function Home() {
               type="password"
               name="password"
               id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
 
@@ -45,7 +83,7 @@ export default function Home() {
               Login With Google
             </button>
             <div className="flex gap-4 w-full">
-              <button className="bg-main text-black w-1/2">Login</button>
+              <button type="submit" onClick={handleSubmit} disabled={loading} className="bg-main text-black w-1/2"> {loading ? 'Logging in...' : 'Login'}</button>
               <button className="bg-secondary text-main w-1/2">Sign Up</button>
             </div>
             <p className="text-main">
